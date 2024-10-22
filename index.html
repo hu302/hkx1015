@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const scores = [
+
+{ number: 'N1047', chinese: 95, math: 79, english: 98 },
+
+{ number: 'N1176', chinese: 84, math: 72, english: 76 },
+
+{ number: 'N1087', chinese: 82, math: 99, english: 97 },
+
+{ number: 'N1808', chinese: 77, math: 89, english: 70 },
+
+{ number: 'N1365', chinese: 93, math: 79, english: 71 },
+
+{ number: 'N1416', chinese: 90, math: 91, english: 91 },
+
+{ number: 'N1048', chinese: 74, math: 89, english: 85 },
+
+{ number: 'N1126', chinese: 74, math: 82, english: 85 },
+
+{ number: 'N1386', chinese: 77, math: 77, english: 85 },
+
+{ number: 'N1869', chinese: 90, math: 74, english: 99 }
+
+]
+
+// 第一步
+// 计算总分
+scores.forEach(s=>s.score=s.chinese+s.math+s.english)
+// 进行排序
+scores.sort((a,b)=>b.score-a.score)
+// 输出学号和总分
+scores.forEach(s=>document.write(`number:${s.number},total score:${s.score}`+'<br>'))
+// 第二步
+function finds(course) {
+    document.write(`${course}前三名：<br>`)
+    scores.sort((a, b) => b[course] - a[course])
+        .slice(0, 3)
+        .forEach(s => {
+            document.write(`number: ${s.number}, ${course}: ${s[course]}<br>`)
+        })
+}
+
+// 示例调用
+finds('chinese')
+finds('math')
+finds('english');
+
+    </script>
+</body>
+</html>
